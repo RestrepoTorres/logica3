@@ -165,6 +165,33 @@ public class matrizEnTripletas {
         return 1;
     }
 
+    public matrizEnTripletas transpuesta() {
+        Tripleta tPorInsertar = new Tripleta(this.getNumeroColumnas(), this.getNumeroFilas(), 0);
+        matrizEnTripletas b = new matrizEnTripletas(tPorInsertar);
+        for (int i = 1; i <= this.getNumeroTripletas(); i++) {
+            tPorInsertar = this.getTripleta(i);
+            tPorInsertar = new Tripleta(tPorInsertar.getColumna(), tPorInsertar.getFila(), tPorInsertar.getValor());
+            b.insertarTripleta(tPorInsertar);
+        }
+        return b;
+    }
+
+    public matrizEnTripletas transpuestaMedia() {
+        Tripleta    tTemp = new Tripleta(this.getNumeroColumnas(), this.getNumeroFilas(), this.getNumeroTripletas());
+        matrizEnTripletas b = new matrizEnTripletas(tTemp);
+        int k = 0;
+        for (int i = 1; i <= this.getNumeroColumnas(); i++) {
+            for (int j = 1; j <= this.getNumeroTripletas(); j++) {
+                tTemp = getTripleta(i);
+                if (tTemp.getColumna() == i) {
+                    k = k + 1;
+                    b.asignaTripleta(new Tripleta(tTemp.getColumna(), tTemp.getFila(), tTemp.getValor()), k);
+                }
+            }
+        }
+        return b;
+    }
+
     Boolean mismasDimensiones(matrizEnTripletas a, matrizEnTripletas b) {
         if ((a.getNumeroFilas() == b.getNumeroFilas()) & (a.getNumeroColumnas() == b.getNumeroColumnas())) {
             return true;
