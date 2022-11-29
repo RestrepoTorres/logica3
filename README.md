@@ -1,18 +1,10 @@
-## Getting Started
+# Lógica III
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Implementación en Java del código usado en la asignatura Lógica III siguiendo el libro guía de Roberto Floréz.
 
-## Folder Structure
+Gran parte del código ha sido modificado respecto a lo que se encuentra en el libro; se han cambiado nombre, eliminado variables redundantes y creado métodos auxiliares; con el fin que el código sea más limpio, entendible y manejable.
 
-The workspace contains two folders by default, where:
+## Secciones
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### [Matrices dispersas](./src/matrices/READMEMatrices.md)
+las matrices son aquellas en las que la mayoria de sus elementos son 0, se hace por tanto necesario una forma de optimizar su manejo implementando formas de representación más alla de los arrays.
