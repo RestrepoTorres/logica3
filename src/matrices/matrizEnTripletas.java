@@ -177,7 +177,7 @@ public class matrizEnTripletas {
     }
 
     public matrizEnTripletas transpuestaMedia() {
-        Tripleta    tTemp = new Tripleta(this.getNumeroColumnas(), this.getNumeroFilas(), this.getNumeroTripletas());
+        Tripleta tTemp = new Tripleta(this.getNumeroColumnas(), this.getNumeroFilas(), this.getNumeroTripletas());
         matrizEnTripletas b = new matrizEnTripletas(tTemp);
         int k = 0;
         for (int i = 1; i <= this.getNumeroColumnas(); i++) {
@@ -188,6 +188,29 @@ public class matrizEnTripletas {
                     b.asignaTripleta(new Tripleta(tTemp.getColumna(), tTemp.getFila(), tTemp.getValor()), k);
                 }
             }
+        }
+        return b;
+    }
+
+    public matrizEnTripletas transpuestaRapida() {
+        Tripleta ti;
+        ti = new Tripleta(this.getNumeroColumnas(), this.getNumeroFilas(), this.getNumeroTripletas());
+        matrizEnTripletas b = new matrizEnTripletas(ti);
+        int[] s = new int[this.getNumeroColumnas() + 1]; // elementos en cada columna
+        int[] t = new int[this.getNumeroColumnas() + 1]; //
+        for (int i = 1; i <= this.getNumeroTripletas(); i++) {
+            ti = this.getTripleta(i);
+            s[ti.getColumna()] = s[ti.getColumna()] + 1;
+        }
+        t[1] = 1;
+        for (int i = 2; i <= this.getNumeroColumnas(); i++) {
+            t[i] = t[i - 1] + s[i - 1];
+        }
+        for (int i = 1; i <= this.getNumeroTripletas(); i++) {
+            ti = this.getTripleta(i);
+            int j = ti.getColumna();
+            b.asignaTripleta(new Tripleta(ti.getColumna(), ti.getFila(), ti.getValor()), t[j]);
+            t[j]=t[j]+1;
         }
         return b;
     }
@@ -214,4 +237,5 @@ public class matrizEnTripletas {
         matrizEnTripletas c = b.multiplicacionPorEscalar(-1);
         return this.suma(c);
     }
+
 }
