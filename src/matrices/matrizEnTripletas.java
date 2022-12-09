@@ -210,7 +210,7 @@ public class matrizEnTripletas {
             ti = this.getTripleta(i);
             int j = ti.getColumna();
             b.asignaTripleta(new Tripleta(ti.getColumna(), ti.getFila(), ti.getValor()), t[j]);
-            t[j]=t[j]+1;
+            t[j] = t[j] + 1;
         }
         return b;
     }
@@ -238,4 +238,40 @@ public class matrizEnTripletas {
         return this.suma(c);
     }
 
+    public matrizEnTripletas intercambioDeColumnas(int columnaA, int columnaB) {
+        matrizEnTripletas b = new matrizEnTripletas(
+                new Tripleta(this.getNumeroFilas(), this.getNumeroColumnas(), this.getNumeroTripletas()));
+        for (int i = 1; i <= this.getNumeroTripletas(); i++) {
+            Tripleta d = this.getTripleta(i);
+            if (d.getColumna() == columnaA) {
+                b.insertarTripleta(new Tripleta(d.getFila(), columnaB, d.getValor()));
+                break;
+            }
+            if (d.getColumna() == columnaB) {
+                b.insertarTripleta(new Tripleta(d.getFila(), columnaA, d.getValor()));
+                break;
+            } else {
+                b.insertarTripleta(this.getTripleta(i));
+            }
+        }
+        return b;
+    }
+    public matrizEnTripletas intercambioDeFilas(int filaA, int filaB) {
+        matrizEnTripletas b = new matrizEnTripletas(
+                new Tripleta(this.getNumeroFilas(), this.getNumeroColumnas(), this.getNumeroTripletas()));
+        for (int i = 1; i <= this.getNumeroTripletas(); i++) {
+            Tripleta d = this.getTripleta(i);
+            if (d.getFila() == filaA) {
+                b.insertarTripleta(new Tripleta(filaB, d.getColumna(), d.getValor()));
+                break;
+            }
+            if (d.getFila() == filaB) {
+                b.insertarTripleta(new Tripleta(filaA, d.getColumna(), d.getValor()));
+                break;
+            } else {
+                b.insertarTripleta(this.getTripleta(i));
+            }
+        }
+        return b;
+    }
 }
